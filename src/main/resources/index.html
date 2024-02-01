@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- Set blank favicon -->
+
+    <title>Hounsfield windowing</title>
+    <style>
+      html, body {
+          width: 100%;
+          height: 100%;
+          margin: 0px;
+          border: 0;
+          overflow: hidden; /*  Disable scrollbars */
+          display: block;  /* No floating content on sides */
+      }
+
+      #menu {
+          position: absolute;
+          left: 0%;
+          top: 0%;
+          width: 100%;
+          height: 13em;  /* Height of 13 lines of text */
+          background-color: lightgray;
+      }
+      
+      #display {
+          position: absolute;
+          left: 0%;
+          top: 13em;
+          width: 100%;
+          bottom: 0px;
+          background-color: black;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div id="menu">
+      <p align="center">
+        <b>Hounsfield windowing</b>
+      </p>
+      
+      <p align="center">
+        <input id="dicom-input" type="file" />
+      </p>
+
+      <p align="center">
+        Low Hounsfield:
+        <input type="range" id="hounsfield-low" min="-1000" max="3000" value="-1000" />
+        <span id="hounsfield-low-span"></span>
+      </p>
+
+      <p align="center">
+        High Hounsfield:
+        <input type="range" id="hounsfield-high" min="-1000" max="3000" value="3000" />
+        <span id="hounsfield-high-span"></span>
+      </p>
+      
+      <p align="center">
+        <button id="bone">Bone window</button>
+        <button id="lung">Lung window</button>
+      </p>
+    </div>
+    
+    <div id="display" class="container">
+      <canvas></canvas>
+    </div>
+    
+    <script src="axios.min.js"></script>
+    
+    <!-- UCLouvain libraries -->
+    <script src="BestRendering.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
